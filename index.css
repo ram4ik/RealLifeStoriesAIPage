@@ -76,6 +76,26 @@ header {
     transition: var(--transition);
 }
 
+.locale-switcher {
+    margin-left: 1rem;
+    border: 1px solid #d1d5db;
+    background: var(--white);
+    color: var(--text);
+    border-radius: 999px;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.locale-switcher:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-1px);
+}
+
 .logo {
     font-size: 1.5rem;
     font-weight: 800;
@@ -343,6 +363,10 @@ footer {
 
     nav {
         display: none;
+    }
+
+    .locale-switcher {
+        margin-left: auto;
     }
 }
 
