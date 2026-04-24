@@ -81,19 +81,31 @@ header {
     border: 1px solid #d1d5db;
     background: var(--white);
     color: var(--text);
-    border-radius: 999px;
-    padding: 0.5rem 0.9rem;
+    border-radius: 12px;
+    padding: 0.5rem 0.8rem;
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0.04em;
     cursor: pointer;
     transition: var(--transition);
+    min-width: 88px;
 }
 
 .locale-switcher:hover {
     border-color: var(--primary);
     color: var(--primary);
     transform: translateY(-1px);
+}
+
+.locale-picker-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
 
 .logo {

@@ -27,9 +27,23 @@
                         class="btn-download-nav" data-i18n="navDownload">Download Now</a></li>
             </ul>
         </nav>
-        <button id="locale-switcher" class="locale-switcher" type="button" aria-label="Switch language">
-            EN
-        </button>
+        <label class="locale-picker-label" for="locale-picker">Language</label>
+        <select id="locale-picker" class="locale-switcher" aria-label="Select language">
+            <option value="en">EN</option>
+            <option value="nl">NL</option>
+            <option value="da">DA</option>
+            <option value="fr">FR</option>
+            <option value="ge">GE</option>
+            <option value="it">IT</option>
+            <option value="pl">PL</option>
+            <option value="pt">PT</option>
+            <option value="pt-br">PT-BR</option>
+            <option value="ru">RU</option>
+            <option value="sp">SP</option>
+            <option value="jp">JP</option>
+            <option value="ko">KO</option>
+            <option value="ch">CH</option>
+        </select>
     </header>
 
     <main>
@@ -552,7 +566,7 @@
         };
 
         const localeOrder = ['en', 'nl', 'da', 'fr', 'ge', 'it', 'pl', 'pt', 'pt-br', 'ru', 'sp', 'jp', 'ko', 'ch'];
-        const localeSwitcher = document.getElementById('locale-switcher');
+        const localePicker = document.getElementById('locale-picker');
 
         function applyTranslations(locale) {
             const dictionary = translations[locale] || translations.en;
@@ -566,8 +580,8 @@
                 }
             });
 
-            if (localeSwitcher) {
-                localeSwitcher.textContent = locale.toUpperCase();
+            if (localePicker) {
+                localePicker.value = locale;
             }
         }
 
@@ -579,16 +593,16 @@
             return 'en';
         }
 
-        function switchLocale() {
-            const currentLocale = localStorage.getItem('site-locale') || 'en';
-            const currentIndex = localeOrder.indexOf(currentLocale);
-            const nextLocale = localeOrder[(currentIndex + 1) % localeOrder.length];
+        function setLocale(locale) {
+            const nextLocale = localeOrder.includes(locale) ? locale : 'en';
             localStorage.setItem('site-locale', nextLocale);
             applyTranslations(nextLocale);
         }
 
-        if (localeSwitcher) {
-            localeSwitcher.addEventListener('click', switchLocale);
+        if (localePicker) {
+            localePicker.addEventListener('change', (event) => {
+                setLocale(event.target.value);
+            });
         }
 
         applyTranslations(getInitialLocale());
